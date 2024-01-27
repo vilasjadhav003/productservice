@@ -1,10 +1,9 @@
 package dev.vilas.productservices.models;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
 
 
 
@@ -13,7 +12,7 @@ import java.util.UUID;
 @MappedSuperclass
 public class Base {
     @Id
-    @GeneratedValue(generator = "vilas-uuid-generator")
-    @GenericGenerator(name = "vilas-uuid-generator", strategy = "uuid2")
-    private UUID uuid;
+    @UuidGenerator(style = UuidGenerator.Style.RANDOM)
+    @Column(columnDefinition = "varchar(128)", nullable = false, updatable = false)
+    private UUID id;
 }

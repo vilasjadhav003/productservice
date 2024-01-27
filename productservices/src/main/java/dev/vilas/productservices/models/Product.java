@@ -1,6 +1,7 @@
 package dev.vilas.productservices.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class Product extends Base {
     // => R to L: m : 1
     // => Ans:    m : 1
     @ManyToOne
+    @JoinColumn(name = "category")
     private Category category;
     private double price;
 }
